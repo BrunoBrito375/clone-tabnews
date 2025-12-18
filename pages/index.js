@@ -1,5 +1,5 @@
 function Home() {
-  return <h1> Hoje é feriadoooo?</h1>;
+  return <h1> Meu site!</h1>;
 }
 
 export default Home;
