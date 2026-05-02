@@ -1476,3 +1476,14 @@ footer {
     font-size: 24px;
   }
 }
+.sw-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px;
+}
+
+.sw-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
