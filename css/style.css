@@ -1213,6 +1213,92 @@ footer {
   transition-delay: 0.3s;
 }
 
+/* ============================================================
+   NOTICE BAR
+   ============================================================ */
+.notice-bar {
+  background: rgba(255, 107, 0, 0.08);
+  border-top: 1px solid rgba(255, 107, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 107, 0, 0.2);
+  padding: 14px 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 100%;
+}
+.notice-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.notice-bar p {
+  font-size: 13px;
+  color: var(--gray-light);
+  line-height: 1.6;
+}
+.notice-bar strong {
+  color: var(--orange);
+}
+
+/* ============================================================
+   SOFTWARES SECTION
+   ============================================================ */
+.softwares {
+  padding: 80px 2.5rem;
+  background: var(--dark);
+  text-align: center;
+}
+.software-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  max-width: 1100px;
+  margin: 48px auto 0;
+}
+.sw-card {
+  background: var(--dark-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px 16px;
+  transition:
+    border-color 0.3s,
+    transform 0.3s;
+  text-align: center;
+}
+.sw-card:hover {
+  border-color: rgba(255, 107, 0, 0.4);
+  transform: translateY(-4px);
+}
+.sw-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 16px;
+  color: var(--orange);
+}
+.sw-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.sw-card h4 {
+  font-family: var(--font-head);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.sw-card p {
+  font-size: 12px;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   IMAGE FIX
+   ============================================================ */
 .svc-img-wrap {
   width: 100%;
   height: 160px;
@@ -1220,7 +1306,6 @@ footer {
   overflow: hidden;
   margin-bottom: 20px;
 }
-
 .svc-img-wrap img {
   width: 100%;
   height: 100%;
@@ -1228,7 +1313,20 @@ footer {
   object-position: center;
   transition: transform 0.4s ease;
 }
-
 .svc-card:hover .svc-img-wrap img {
   transform: scale(1.05);
+}
+
+@media (max-width: 900px) {
+  .software-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .software-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .notice-bar {
+    padding: 14px 1.25rem;
+  }
 }
