@@ -4,188 +4,775 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EngForce — Aprimoramento de Projetos Mecânicos</title>
-
+    <meta
+      name="description"
+      content="Aprimoramento, correção e proposta de projetos mecânicos com SolidWorks, Inventor, Fusion 360, Onshape e AutoCAD. Estudantes de engenharia mecânica prontos para transformar seu projeto."
+    />
     <link rel="stylesheet" href="css/style.css" />
-
-    <!-- ESTILO EXTRA APENAS PARA ANIMAÇÃO -->
-    <style>
-      .gear-container {
-        position: relative;
-        width: 360px;
-        height: 360px;
-      }
-
-      .gear {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform-origin: center;
-        transform: translate(-50%, -50%);
-        animation: rotate 12s linear infinite;
-      }
-
-      .gear-small {
-        width: 120px;
-        transform: translate(-50%, -50%) rotate(0deg);
-        animation-direction: reverse;
-        top: 65%;
-        left: 65%;
-      }
-
-      .gear-main {
-        width: 260px;
-      }
-
-      @keyframes rotate {
-        from {
-          transform: translate(-50%, -50%) rotate(0deg);
-        }
-        to {
-          transform: translate(-50%, -50%) rotate(360deg);
-        }
-      }
-
-      .gear.locked {
-        animation: none;
-      }
-
-      /* SOLDADO */
-      .soldier {
-        position: absolute;
-        top: -300px;
-        left: 50%;
-        width: 140px;
-        transform: translateX(-50%);
-        opacity: 0;
-        transition: all 1s ease;
-        z-index: 5;
-      }
-
-      .soldier.enter {
-        top: -40px;
-        opacity: 1;
-      }
-
-      /* FAÍSCAS */
-      .sparks {
-        position: absolute;
-        top: 52%;
-        left: 52%;
-        width: 40px;
-        height: 40px;
-        background: radial-gradient(circle, #ffc400 0%, transparent 70%);
-        opacity: 0;
-        pointer-events: none;
-        z-index: 6;
-      }
-
-      .sparks.active {
-        animation: spark 0.4s ease-out infinite;
-        opacity: 1;
-      }
-
-      @keyframes spark {
-        0% {
-          transform: scale(0.6);
-          opacity: 1;
-        }
-        100% {
-          transform: scale(1.4);
-          opacity: 0;
-        }
-      }
-
-      /* LOGO FINAL */
-      .logo-final {
-        position: absolute;
-        inset: 0;
-        margin: auto;
-        width: 220px;
-        opacity: 0;
-        transform: scale(0.85);
-        transition: all 1s ease;
-        z-index: 4;
-      }
-
-      .logo-final.show {
-        opacity: 1;
-        transform: scale(1);
-      }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+      rel="stylesheet"
+    />
   </head>
-
   <body>
-    <section id="inicio" class="hero">
-      <div class="hero-content">
-        <!-- SEU TEXTO ORIGINAL PERMANECE -->
-      </div>
+    <!-- NAV -->
+    <nav id="navbar">
+      <a href="#inicio" class="logo">ENG<span>FORCE</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#inicio" class="nav-link active">Início</a></li>
+        <li><a href="#servicos" class="nav-link">Serviços</a></li>
+        <li><a href="#projetos" class="nav-link">Projetos</a></li>
+        <li><a href="#sobre" class="nav-link">Sobre</a></li>
+        <li><a href="#contato" class="nav-link nav-cta">Fale Conosco</a></li>
+      </ul>
+    </nav>
 
+    <!-- HERO -->
+    <section id="inicio" class="hero">
+      <div class="hero-bg-grid"></div>
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="dot"></span>
+          Estudantes de Engenharia Mecânica — São Luís, MA
+        </div>
+        <h1 class="hero-title">
+          Seu projeto,<br />
+          <span class="accent-text">Aprimorado</span><br />
+          ao Detalhe
+        </h1>
+        <p class="hero-sub">
+          Aprimoramos, corrigimos e propomos novos modelos mecânicos com
+          precisão técnica. Transformamos ideias e projetos existentes em
+          soluções melhores — usando as principais ferramentas do mercado.
+        </p>
+        <div class="hero-actions">
+          <a href="#servicos" class="btn-primary">Ver Serviços</a>
+          <a href="#contato" class="btn-ghost">Solicitar Proposta →</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-num">CAD</span>
+            <span class="stat-label">Modelagem profissional</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-num">5+</span>
+            <span class="stat-label">Softwares dominados</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-num">100%</span>
+            <span class="stat-label">Dedicação técnica</span>
+          </div>
+        </div>
+      </div>
       <div class="hero-visual">
         <div class="gear-container">
-          <!-- ENGRENAGEM PRINCIPAL -->
-          <svg class="gear gear-main" viewBox="0 0 200 200">
+          <svg
+            class="gear gear-main"
+            viewBox="0 0 200 200"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <g fill="none" stroke="rgba(0,94,184,0.6)" stroke-width="2">
               <circle cx="100" cy="100" r="60" />
               <circle cx="100" cy="100" r="40" />
               <circle cx="100" cy="100" r="8" />
+              <rect x="92" y="28" width="16" height="20" rx="3" />
+              <rect x="92" y="152" width="16" height="20" rx="3" />
+              <rect x="28" y="92" width="20" height="16" rx="3" />
+              <rect x="152" y="92" width="20" height="16" rx="3" />
+              <rect
+                x="46"
+                y="46"
+                width="16"
+                height="20"
+                rx="3"
+                transform="rotate(45 54 56)"
+              />
+              <rect
+                x="138"
+                y="46"
+                width="16"
+                height="20"
+                rx="3"
+                transform="rotate(-45 146 56)"
+              />
+              <rect
+                x="46"
+                y="134"
+                width="16"
+                height="20"
+                rx="3"
+                transform="rotate(-45 54 144)"
+              />
+              <rect
+                x="138"
+                y="134"
+                width="16"
+                height="20"
+                rx="3"
+                transform="rotate(45 146 144)"
+              />
+              <line x1="100" y1="60" x2="100" y2="92" />
+              <line x1="100" y1="108" x2="100" y2="140" />
+              <line x1="60" y1="100" x2="92" y2="100" />
+              <line x1="108" y1="100" x2="140" y2="100" />
+              <line x1="72" y1="72" x2="85" y2="85" />
+              <line x1="115" y1="115" x2="128" y2="128" />
+              <line x1="128" y1="72" x2="115" y2="85" />
+              <line x1="85" y1="115" x2="72" y2="128" />
             </g>
           </svg>
-
-          <!-- ENGRENAGEM MENOR -->
-          <svg class="gear gear-small" viewBox="0 0 100 100">
-            <g fill="none" stroke="rgba(0,94,184,0.4)" stroke-width="2">
-              <circle cx="50" cy="50" r="28" />
-              <circle cx="50" cy="50" r="14" />
+          <svg
+            class="gear gear-small"
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g fill="none" stroke="rgba(0,94,184,0.4)" stroke-width="1.5">
+              <circle cx="50" cy="50" r="30" />
+              <circle cx="50" cy="50" r="18" />
+              <circle cx="50" cy="50" r="5" />
+              <rect x="43" y="14" width="14" height="12" rx="2" />
+              <rect x="43" y="74" width="14" height="12" rx="2" />
+              <rect x="14" y="43" width="12" height="14" rx="2" />
+              <rect x="74" y="43" width="12" height="14" rx="2" />
             </g>
           </svg>
-
-          <!-- SOLDADO SIMBÓLICO -->
-          <svg class="soldier" viewBox="0 0 200 300">
-            <g fill="none" stroke="#0a58ca" stroke-width="5">
-              <circle cx="100" cy="50" r="25" />
-              <line x1="100" y1="75" x2="100" y2="150" />
-              <line x1="100" y1="100" x2="40" y2="140" />
-              <line x1="40" y1="140" x2="20" y2="120" />
-            </g>
-          </svg>
-
-          <!-- FAISCAS -->
-          <div class="sparks"></div>
-
-          <!-- LOGO FINAL -->
-          <img
-            src="images/logo-engforce.png"
-            class="logo-final"
-            alt="EngForce"
-          />
+          <div class="circuit-lines">
+            <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+              <g stroke="rgba(0,94,184,0.2)" stroke-width="1" fill="none">
+                <path d="M0,150 L60,150 L60,80 L120,80" />
+                <path d="M300,150 L240,150 L240,220 L180,220" />
+                <path d="M150,0 L150,60 L220,60" />
+                <path d="M150,300 L150,240 L80,240" />
+                <circle cx="60" cy="150" r="3" fill="rgba(0,94,184,0.4)" />
+                <circle cx="240" cy="150" r="3" fill="rgba(0,94,184,0.4)" />
+                <circle cx="150" cy="60" r="3" fill="rgba(0,94,184,0.4)" />
+                <circle cx="150" cy="240" r="3" fill="rgba(0,94,184,0.4)" />
+              </g>
+            </svg>
+          </div>
         </div>
       </div>
     </section>
 
-    <script>
-      window.addEventListener("load", () => {
-        const soldier = document.querySelector(".soldier");
-        const gears = document.querySelectorAll(".gear");
-        const sparks = document.querySelector(".sparks");
-        const logo = document.querySelector(".logo-final");
+    <!-- AVISO TRANSPARENTE -->
+    <div class="notice-bar">
+      <span class="notice-icon">🎓</span>
+      <p>
+        Somos estudantes de Engenharia Mecânica em formação. Trabalhamos com
+        <strong>propostas e modelos de projeto</strong> — sem emissão de
+        ART/RRT. Transparência e qualidade técnica acima de tudo.
+      </p>
+    </div>
 
-        setTimeout(() => {
-          soldier.classList.add("enter");
-        }, 1200);
+    <!-- SERVICES -->
+    <section id="servicos" class="services">
+      <div class="services-header">
+        <div class="section-label">
+          <span class="label-line"></span>
+          NOSSOS SERVIÇOS
+          <span class="label-line"></span>
+        </div>
+        <h2 class="section-title">O que <span>entregamos</span></h2>
+        <p class="section-sub">
+          Aprimoramos projetos mecânicos existentes, corrigimos falhas e
+          propomos novos modelos com rigor técnico e as melhores ferramentas CAD
+          do mercado.
+        </p>
+      </div>
 
-        setTimeout(() => {
-          gears.forEach((g) => g.classList.add("locked"));
-          sparks.classList.add("active");
-        }, 2600);
+      <div class="svc-showcase">
+        <div class="svc-item">
+          <div class="svc-bg">
+            <img src="images/aprimora.png" alt="Aprimoramento de Projetos" />
+            <div class="svc-overlay"></div>
+          </div>
+          <div class="svc-content">
+            <div class="svc-top">
+              <span class="svc-number">01</span>
+              <div class="svc-arrow">→</div>
+            </div>
+            <div class="svc-bottom">
+              <h3>Aprimoramento<br />de Projetos</h3>
+              <div class="svc-detail">
+                <p>
+                  Recebemos seu projeto existente e identificamos pontos de
+                  melhoria — geometria, tolerâncias, encaixes, montagem e
+                  funcionalidade — entregando uma versão aprimorada e
+                  documentada.
+                </p>
+                <div class="svc-chips">
+                  <span>Revisão técnica</span><span>Modelagem 3D</span
+                  ><span>Otimização</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        setTimeout(() => {
-          sparks.classList.remove("active");
-        }, 3300);
+        <div class="svc-item">
+          <div class="svc-bg">
+            <img src="images/falha.png" alt="Correção de Falhas" />
+            <div class="svc-overlay"></div>
+          </div>
+          <div class="svc-content">
+            <div class="svc-top">
+              <span class="svc-number">02</span>
+              <div class="svc-arrow">→</div>
+            </div>
+            <div class="svc-bottom">
+              <h3>Correção de<br />Falhas no Modelo</h3>
+              <div class="svc-detail">
+                <p>
+                  Analisamos modelos com erros de geometria, interferências,
+                  faces ruins ou problemas de montagem. Corrigimos e entregamos
+                  o modelo limpo, pronto para uso ou fabricação.
+                </p>
+                <div class="svc-chips">
+                  <span>Diagnóstico</span><span>Reparo de geometria</span
+                  ><span>Validação</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        setTimeout(() => {
-          logo.classList.add("show");
-        }, 4200);
-      });
-    </script>
+        <div class="svc-item">
+          <div class="svc-bg">
+            <img src="images/proposta.png" alt="Proposta de Novo Projeto" />
+            <div class="svc-overlay"></div>
+          </div>
+          <div class="svc-content">
+            <div class="svc-top">
+              <span class="svc-number">03</span>
+              <div class="svc-arrow">→</div>
+            </div>
+            <div class="svc-bottom">
+              <h3>Proposta de<br />Novo Projeto</h3>
+              <div class="svc-detail">
+                <p>
+                  A partir da sua ideia ou necessidade, desenvolvemos um modelo
+                  3D conceitual com a proposta de solução mecânica — peças,
+                  montagem e vista explodida.
+                </p>
+                <div class="svc-chips">
+                  <span>Conceituação</span><span>Modelagem 3D</span
+                  ><span>Montagem</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="svc-item">
+          <div class="svc-bg">
+            <img src="images/desenhoTec.png" alt="Desenho Técnico" />
+            <div class="svc-overlay"></div>
+          </div>
+          <div class="svc-content">
+            <div class="svc-top">
+              <span class="svc-number">04</span>
+              <div class="svc-arrow">→</div>
+            </div>
+            <div class="svc-bottom">
+              <h3>Desenho Técnico<br />& Pranchas</h3>
+              <div class="svc-detail">
+                <p>
+                  Geração de pranchas técnicas 2D com cotas, tolerâncias, vistas
+                  e cortes, seguindo normas ABNT para documentação de peças e
+                  conjuntos mecânicos.
+                </p>
+                <div class="svc-chips">
+                  <span>ABNT</span><span>Cotas e tolerâncias</span
+                  ><span>Vistas e cortes</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="svc-item">
+          <div class="svc-bg">
+            <img src="images/convComp.png" alt="Conversão e Compatibilidade" />
+            <div class="svc-overlay"></div>
+          </div>
+          <div class="svc-content">
+            <div class="svc-top">
+              <span class="svc-number">05</span>
+              <div class="svc-arrow">→</div>
+            </div>
+            <div class="svc-bottom">
+              <h3>Conversão &<br />Compatibilidade</h3>
+              <div class="svc-detail">
+                <p>
+                  Conversão de arquivos entre formatos CAD (STEP, IGES, STL,
+                  DWG, F3D, SLDPRT) para garantir compatibilidade entre
+                  diferentes softwares e fluxos de trabalho.
+                </p>
+                <div class="svc-chips">
+                  <span>STEP / IGES</span><span>STL para impressão</span
+                  ><span>DWG / DXF</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="svc-item">
+          <div class="svc-bg">
+            <img src="images/conOrientacad.png" alt="Consultoria CAD" />
+            <div class="svc-overlay"></div>
+          </div>
+          <div class="svc-content">
+            <div class="svc-top">
+              <span class="svc-number">06</span>
+              <div class="svc-arrow">→</div>
+            </div>
+            <div class="svc-bottom">
+              <h3>Consultoria &<br />Orientação CAD</h3>
+              <div class="svc-detail">
+                <p>
+                  Orientamos estudantes e profissionais sobre boas práticas de
+                  modelagem, organização de montagens, uso de recursos avançados
+                  e fluxo de projeto eficiente.
+                </p>
+                <div class="svc-chips">
+                  <span>Boas práticas</span><span>Revisão de fluxo</span
+                  ><span>Mentoria</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOFTWARES -->
+    <section class="softwares">
+      <div class="section-label">
+        <span class="label-line"></span>
+        FERRAMENTAS
+        <span class="label-line"></span>
+      </div>
+      <h2 class="section-title">Softwares que <span>dominamos</span></h2>
+      <div class="software-grid">
+        <div class="sw-card">
+          <div class="sw-icon">
+            <img src="images/logoSolid.png" alt="SolidWorks" />
+          </div>
+          <h4>SolidWorks</h4>
+          <p>
+            Modelagem paramétrica, montagens complexas e simulação FEA básica
+          </p>
+        </div>
+
+        <div class="sw-card">
+          <div class="sw-icon">
+            <img src="images/logoInventor.png" alt="Autodesk Inventor" />
+          </div>
+          <h4>Autodesk Inventor</h4>
+          <p>
+            Projetos mecânicos industriais, iAssemblies e geração de pranchas
+          </p>
+        </div>
+
+        <div class="sw-card">
+          <div class="sw-icon">
+            <img src="images/logoFusion.png" alt="Fusion 360" />
+          </div>
+          <h4>Fusion 360</h4>
+          <p>Design generativo, CAM integrado e colaboração em nuvem</p>
+        </div>
+
+        <div class="sw-card">
+          <div class="sw-icon">
+            <img src="images/logoOnshape.png" alt="Onshape" />
+          </div>
+          <h4>Onshape</h4>
+          <p>
+            Modelagem 100% em nuvem, colaboração em tempo real e versionamento
+          </p>
+        </div>
+
+        <div class="sw-card">
+          <div class="sw-icon">
+            <img src="images/logoAutocad.png" alt="AutoCAD" />
+          </div>
+          <h4>AutoCAD</h4>
+          <p>Desenho técnico 2D, pranchas ABNT, plantas e detalhamentos</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS / PORTFOLIO -->
+    <section id="projetos" class="projects">
+      <div class="projects-header">
+        <div>
+          <div class="section-label left">
+            <span class="label-line short"></span>
+            PORTFÓLIO
+          </div>
+          <h2 class="section-title left">Projetos em <span>Destaque</span></h2>
+        </div>
+        <a href="#contato" class="btn-outline-dark">Ver todos →</a>
+      </div>
+
+      <div class="projects-grid">
+        <div class="proj-card proj-large">
+          <div class="proj-visual mec">
+            <img src="images/port1.png" alt="Redesign de Suporte Estrutural" />
+          </div>
+          <div class="proj-info">
+            <span class="proj-tag">Aprimoramento de Modelo</span>
+            <h3>Redesign de Suporte Estrutural</h3>
+            <p>
+              Recebemos um modelo com interferências e geometria inconsistente.
+              Corrigimos, otimizamos a estrutura e entregamos pranchas técnicas
+              completas em SolidWorks.
+            </p>
+            <div class="proj-meta">
+              <span>SolidWorks</span><span>Correção</span
+              ><span>Pranchas ABNT</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-visual auto">
+            <img src="images/port2.png" alt="Proposta de Garra Mecânica" />
+          </div>
+          <div class="proj-info">
+            <span class="proj-tag">Proposta de Projeto</span>
+            <h3>Proposta de Garra Mecânica</h3>
+            <p>
+              Desenvolvimento conceitual de garra para manipulador robótico com
+              modelagem 3D, montagem e vista explodida no Fusion 360.
+            </p>
+            <div class="proj-meta">
+              <span>Fusion 360</span><span>Montagem</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-visual sim">
+            <img
+              src="images/port3.png"
+              alt="Pranchas ABNT de Conjunto Mecânico"
+            />
+          </div>
+          <div class="proj-info">
+            <span class="proj-tag">Desenho Técnico</span>
+            <h3>Pranchas ABNT de Conjunto Mecânico</h3>
+            <p>
+              Geração completa de desenho técnico com cotas, tolerâncias, lista
+              de peças e vistas em corte no AutoCAD.
+            </p>
+            <div class="proj-meta"><span>AutoCAD</span><span>ABNT</span></div>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-visual elec">
+            <img
+              src="images/port4.png"
+              alt="Reparo de Modelo com Interferências"
+            />
+          </div>
+          <div class="proj-info">
+            <span class="proj-tag">Correção de Modelo</span>
+            <h3>Reparo de Modelo com Interferências</h3>
+            <p>
+              Diagnóstico e correção de montagem com interferências críticas
+              entre componentes, entregue em Onshape com relatório de
+              alterações.
+            </p>
+            <div class="proj-meta">
+              <span>Onshape</span><span>Diagnóstico</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="sobre" class="about">
+      <div class="about-content">
+        <div class="about-text">
+          <div class="section-label left">
+            <span class="label-line short"></span>
+            QUEM SOMOS
+          </div>
+          <h2 class="section-title left">
+            Estudantes com <span>propósito</span>
+          </h2>
+          <p>
+            Somos um grupo de estudantes de Engenharia Mecânica de São Luís —
+            MA, unidos pela paixão por projetos e pela vontade de crescer no
+            mercado antes mesmo de nos formarmos.
+          </p>
+          <p>
+            Nossa missão hoje é simples: ganhar experiência real desenvolvendo,
+            aprimorando e corrigindo projetos mecânicos, construindo um
+            portfólio sólido enquanto ainda estamos na faculdade.
+          </p>
+          <p>
+            Ainda não emitimos ART — mas entregamos qualidade técnica,
+            transparência total e compromisso com cada projeto que assumimos.
+          </p>
+          <div class="about-pills">
+            <span>✓ Estudantes de Eng. Mecânica</span>
+            <span>✓ Atendimento presencial em São Luís</span>
+            <span>✓ Projetos 100% remotos aceitos</span>
+            <span>✓ Sem emissão de ART — apenas propostas</span>
+            <span>✓ Transparência e comprometimento</span>
+          </div>
+        </div>
+        <div class="about-cards">
+          <div class="about-card-highlight">
+            <div class="highlight-icon">⚙️</div>
+            <h3>Softwares que utilizamos</h3>
+            <div class="tools-list">
+              <div class="tool-item">
+                <span class="tool-dot mec-dot"></span>SolidWorks
+              </div>
+              <div class="tool-item">
+                <span class="tool-dot auto-dot"></span>Autodesk Inventor
+              </div>
+              <div class="tool-item">
+                <span class="tool-dot sim-dot"></span>Fusion 360
+              </div>
+              <div class="tool-item">
+                <span class="tool-dot elec-dot"></span>Onshape
+              </div>
+              <div class="tool-item">
+                <span class="tool-dot mec-dot"></span>AutoCAD
+              </div>
+            </div>
+          </div>
+          <div class="about-card-highlight" style="margin-top: 16px">
+            <div class="highlight-icon">🚀</div>
+            <h3>Nossa visão de futuro</h3>
+            <p
+              style="
+                font-size: 14px;
+                color: var(--gray);
+                line-height: 1.75;
+                margin-top: 8px;
+              "
+            >
+              Quando nos formarmos e tirarmos o CREA, a EngForce vai se tornar
+              um escritório completo de engenharia mecânica — com RT, laudos e
+              projetos industriais. Por enquanto, estamos construindo a base:
+              experiência, portfólio e reputação.
+            </p>
+          </div>
+          <div class="about-badge-row" style="margin-top: 16px">
+            <div class="badge-item">
+              <div class="badge-num">5</div>
+              <div class="badge-label">Softwares</div>
+            </div>
+            <div class="badge-item">
+              <div class="badge-num">MA</div>
+              <div class="badge-label">São Luís</div>
+            </div>
+            <div class="badge-item">
+              <div class="badge-num">🎓</div>
+              <div class="badge-label">Em formação</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BAND -->
+    <section class="cta-band">
+      <div class="cta-band-inner">
+        <div>
+          <h2>Tem um projeto para melhorar?</h2>
+          <p>
+            Envie seu modelo ou ideia e receba uma proposta técnica
+            personalizada em até 2 dias úteis.
+          </p>
+        </div>
+        <a href="#contato" class="btn-primary large">Solicitar Proposta →</a>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contato" class="contact">
+      <div class="contact-grid">
+        <div class="contact-left">
+          <div class="section-label left">
+            <span class="label-line short"></span>
+            CONTATO
+          </div>
+          <h2 class="section-title left">Vamos <span>conversar</span></h2>
+          <p>
+            Tem um projeto para aprimorar, um modelo com problemas ou uma ideia
+            nova? Nos conta — respondemos rápido.
+          </p>
+          <div class="contact-items">
+            <div class="contact-item">
+              <div class="c-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.09 6.09l1.18-.94a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <strong>(98) 98461-1756</strong>
+                <span>WhatsApp disponível</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="c-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                  />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+              </div>
+              <div>
+                <strong>contato@engforce.com.br</strong>
+                <span>Resposta em até 24h</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="c-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <div>
+                <strong>São Luís, Maranhão — MA</strong>
+                <span>Atendimento presencial e remoto</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form-wrap">
+          <form
+            class="contact-form"
+            id="contactForm"
+            onsubmit="submitContact(event)"
+          >
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Nome completo</label>
+                <input type="text" id="name" placeholder="Seu nome" required />
+              </div>
+              <div class="form-group">
+                <label for="email">E-mail</label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="email@empresa.com"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="service">Tipo de serviço</label>
+              <select id="service">
+                <option value="">Selecione um serviço</option>
+                <option>Aprimoramento de Projeto Existente</option>
+                <option>Correção de Falhas no Modelo</option>
+                <option>Proposta de Novo Projeto</option>
+                <option>Desenho Técnico / Pranchas ABNT</option>
+                <option>Conversão de Arquivos CAD</option>
+                <option>Consultoria e Orientação CAD</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="software">Software preferido</label>
+              <select id="software">
+                <option value="">Sem preferência</option>
+                <option>SolidWorks</option>
+                <option>Autodesk Inventor</option>
+                <option>Fusion 360</option>
+                <option>Onshape</option>
+                <option>AutoCAD</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="msg">Descrição do projeto</label>
+              <textarea
+                id="msg"
+                rows="4"
+                placeholder="Descreva seu projeto: o que precisa melhorar, qual o problema, ou qual é a ideia nova..."
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn-primary full">
+              Enviar Mensagem
+            </button>
+            <div class="form-success" id="formSuccess">
+              ✅ Mensagem enviada! Retornaremos em breve.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">ENG<span>FORCE</span></div>
+          <p>
+            Estudantes de Engenharia Mecânica desenvolvendo projetos, ganhando
+            experiência e construindo o futuro da engenharia — um modelo de cada
+            vez.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h4>Serviços</h4>
+          <a href="#servicos">Aprimoramento de Projetos</a>
+          <a href="#servicos">Correção de Modelos</a>
+          <a href="#servicos">Proposta de Projeto</a>
+          <a href="#servicos">Desenho Técnico ABNT</a>
+        </div>
+        <div class="footer-links">
+          <h4>Empresa</h4>
+          <a href="#sobre">Sobre nós</a>
+          <a href="#projetos">Portfólio</a>
+          <a href="#contato">Contato</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span
+          >© 2025 EngForce. Estudantes de Engenharia Mecânica — São Luís,
+          MA.</span
+        >
+        <span>Propostas de projeto · Sem emissão de ART</span>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
   </body>
 </html>
