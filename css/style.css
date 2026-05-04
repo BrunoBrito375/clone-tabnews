@@ -1504,3 +1504,20 @@ footer {
   align-items: center;
   justify-content: center;
 }
+.gear-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gear-video {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  display: block;
+
+  border-radius: 12px;
+
+  /* visual mais profissional */
+  filter: drop-shadow(0 0 25px rgba(0, 94, 184, 0.35));
+}
