@@ -1499,3 +1499,44 @@ footer {
 .proj-card:hover .proj-visual img {
   transform: scale(1.05);
 }
+/* ============================= */
+/* VIDEO / GIF ENGENHARIA HERO  */
+/* ============================= */
+
+.hero-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gear-container {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  margin: auto;
+}
+
+/* Vídeo estilo GIF */
+.gear-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+
+  /* deixa mais profissional */
+  filter: drop-shadow(0 0 25px rgba(0, 94, 184, 0.35));
+}
+
+/* Glow tecnológico (efeito empresa grande) */
+.gear-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(0, 94, 184, 0.15), transparent 70%);
+  pointer-events: none;
+}
+
+/* Opcional: integração com fundo */
+.hero {
+  background: radial-gradient(circle at center, #0a0f1c, #05070d);
+}
