@@ -1522,6 +1522,10 @@ footer {
   filter: drop-shadow(0 0 25px rgba(0, 94, 184, 0.35));
 }
 
+/* ============================================================
+   HERO — FUNDO BRANCO (cole no FINAL do seu style.css)
+   ============================================================ */
+
 /* Background branco no hero */
 .hero {
   background: #ffffff !important;
@@ -1544,7 +1548,7 @@ footer {
   color: #0a0f1a !important;
 }
 
-/* Texto accent azul — fica igual, funciona bem no branco */
+/* Texto accent azul — fica igual */
 .accent-text {
   color: var(--blue-light) !important;
 }
@@ -1578,7 +1582,17 @@ footer {
   background: rgba(10, 15, 26, 0.12) !important;
 }
 
-/* Vídeo — remove o glow azul para combinar com fundo branco */
+/* Vídeo — sem destaque, funde com o fundo branco */
+.gear-container {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
 .gear-video {
-  filter: drop-shadow(0 4px 24px rgba(0, 94, 184, 0.18)) !important;
+  filter: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
 }
