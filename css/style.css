@@ -1505,13 +1505,14 @@ footer {
   justify-content: center;
 }
 
-.gear-gif {
+.gear-video {
   width: 100%;
   max-width: 420px;
   height: auto;
   display: block;
 
-  /* deixa mais profissional */
   border-radius: 12px;
-  filter: drop-shadow(0 0 20px rgba(0, 94, 184, 0.3));
+
+  /* visual mais profissional */
+  filter: drop-shadow(0 0 25px rgba(0, 94, 184, 0.35));
 }
